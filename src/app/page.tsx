@@ -263,7 +263,7 @@ export default function Home() {
                 <div className="relative">
                   <div className="absolute -inset-1 bg-gradient-to-r from-brand-cream to-brand-green/30 rounded-2xl blur-2xl opacity-30" />
                   <Image
-                    src="https://placeholder.pics/svg/300"
+                    src="/Banner.jpeg"
                     alt="Dashboard Preview"
                     width={600}
                     height={400}
