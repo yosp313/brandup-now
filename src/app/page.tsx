@@ -155,7 +155,7 @@ export default function Home() {
                 Simple, Transparent Pricing
               </h2>
               <p className="text-muted-foreground text-lg">
-                Choose the perfect plan for your brand's growth journey
+                Choose the perfect plan for your brand&apos;s growth journey
               </p>
             </div>
             <div className="flex items-center justify-center gap-8 max-w-6xl mx-auto">
@@ -230,7 +230,7 @@ export default function Home() {
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <div className="space-y-8">
                   <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-brand-green">
-                    Transform Your Brand's Growth
+                    Transform Your Brand&apos;s Growth
                   </h2>
                   <p className="text-muted-foreground text-lg">
                     Join thousands of successful brands using Brand Up to scale
