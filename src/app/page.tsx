@@ -18,7 +18,8 @@ export default function Home() {
 
     const userEmail = e.get("email") as string;
 
-    await insertEmail(userEmail);
+    const response = await insertEmail(userEmail);
+    console.log(response);
   };
 
   return (
@@ -91,13 +92,15 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-200">
-                <Button
-                  size="lg"
-                  className="bg-brand-cream text-brand-green hover:bg-brand-cream/90 font-medium"
-                >
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="#email_submit">
+                  <Button
+                    size="lg"
+                    className="bg-brand-cream text-brand-green hover:bg-brand-cream/90 font-medium"
+                  >
+                    Start Free Trial
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
                 <Button
                   size="lg"
                   className="bg-brand-cream text-brand-green hover:bg-brand-cream/90 font-medium"
@@ -202,20 +205,25 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    className={plan.recommended
-                      ? "bg-brand-cream text-brand-green hover:bg-brand-cream/90 w-full"
-                      : "bg-brand-green/5 text-brand-green hover:bg-brand-green/10 w-full"}
-                  >
-                    Get Started
-                  </Button>
+                  <Link href="#email_submit">
+                    <Button
+                      className={plan.recommended
+                        ? "bg-brand-cream text-brand-green hover:bg-brand-cream/90 w-full"
+                        : "bg-brand-green/5 text-brand-green hover:bg-brand-green/10 w-full"}
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section
+          id="email_submit"
+          className="py-24 bg-white relative overflow-hidden"
+        >
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4F7363_1px,transparent_1px),linear-gradient(to_bottom,#4F7363_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-5" />
           <div className="container px-4 relative">
             <div className="max-w-6xl mx-auto">
@@ -255,7 +263,7 @@ export default function Home() {
                 <div className="relative">
                   <div className="absolute -inset-1 bg-gradient-to-r from-brand-cream to-brand-green/30 rounded-2xl blur-2xl opacity-30" />
                   <Image
-                    src="/placeholder.svg?height=400&width=600"
+                    src="https://placeholder.pics/svg/300"
                     alt="Dashboard Preview"
                     width={600}
                     height={400}
