@@ -1,33 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { insertEmail } from "@/features/email_post";
 import {
   ArrowRight,
-  Building2,
+  BarChart2,
   ChevronRight,
-  Globe,
-  PencilRulerIcon,
+  Globe2,
+  Rocket,
   Target,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const onSubmit = async (e: FormData) => {
-    "use server";
-
-    const userEmail = e.get("email") as string;
-
-    await insertEmail(userEmail);
-  };
-
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-brand-cream/20">
         <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <Image
-              src="/Logo.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Asset_11-GiJriLrZB8zUXsYvydJoD4ULdeffhe.png"
               alt="Brand Up Logo"
               width={40}
               height={40}
@@ -36,41 +27,41 @@ export default function Home() {
             <span className="text-xl font-bold text-brand-green">Brand Up</span>
           </div>
           <nav className="hidden md:flex gap-8">
-            <a
+            <Link
               href="#features"
               className="text-sm text-muted-foreground hover:text-brand-green transition-colors"
             >
               Features
-            </a>
-            <a
+            </Link>
+            <Link
               href="#how-it-works"
               className="text-sm text-muted-foreground hover:text-brand-green transition-colors"
             >
               How it Works
-            </a>
-            <a
+            </Link>
+            <Link
               href="#pricing"
               className="text-sm text-muted-foreground hover:text-brand-green transition-colors"
             >
               Pricing
-            </a>
+            </Link>
           </nav>
           <div className="flex items-center gap-4">
-            {/* <Button variant="ghost" className="text-sm"> */}
-            {/*   Sign In */}
-            {/* </Button> */}
-            {/* <Button */}
-            {/*   variant="default" */}
-            {/*   className="text-sm bg-brand-green text-white hover:bg-brand-green/90" */}
-            {/* > */}
-            {/*   Get Started */}
-            {/* </Button> */}
+            <Button variant="ghost" className="text-sm">
+              Sign In
+            </Button>
+            <Button
+              variant="default"
+              className="text-sm bg-brand-green text-white hover:bg-brand-green/90"
+            >
+              Get Started
+            </Button>
           </div>
         </div>
       </header>
 
       <main className="flex-1 pt-16">
-        <section className="relative bg-gradient-to-b from-brand-green to-brand-green/90 py-24 lg:py-32">
+        <section className="relative overflow-hidden bg-gradient-to-b from-brand-green to-brand-green/90 py-24 lg:py-32">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4F7363_1px,transparent_1px),linear-gradient(to_bottom,#4F7363_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-10" />
           <div className="container relative px-4">
             <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -155,7 +146,7 @@ export default function Home() {
                 Choose the perfect plan for your brand's growth journey
               </p>
             </div>
-            <div className="flex items-center justify-center gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {pricingPlans.map((plan, i) => (
                 <div
                   key={i}
@@ -215,7 +206,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-24 bg-white relative ">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4F7363_1px,transparent_1px),linear-gradient(to_bottom,#4F7363_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-5" />
           <div className="container px-4 relative">
             <div className="max-w-6xl mx-auto">
@@ -229,27 +220,19 @@ export default function Home() {
                     their business and reach new markets.
                   </p>
                   <div className="space-y-4 max-w-md">
-                    <form
-                      className="p-6 bg-brand-cream/10 rounded-2xl border border-brand-cream/20"
-                      action={onSubmit}
-                    >
+                    <div className="p-6 bg-brand-cream/10 rounded-2xl border border-brand-cream/20">
                       <Input
                         type="email"
-                        name="email"
                         placeholder="Enter your work email"
                         className="mb-3 bg-white border-brand-cream/20"
-                        required
                       />
-                      <Button
-                        className="w-full bg-brand-green text-white hover:bg-brand-green/90"
-                        type="submit"
-                      >
+                      <Button className="w-full bg-brand-green text-white hover:bg-brand-green/90">
                         Start Free Trial
                       </Button>
                       <p className="text-xs text-center text-muted-foreground mt-3">
                         14-day free trial · No credit card required
                       </p>
-                    </form>
+                    </div>
                   </div>
                 </div>
                 <div className="relative">
@@ -273,7 +256,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
               <Image
-                src="/Logo.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Asset_11-GiJriLrZB8zUXsYvydJoD4ULdeffhe.png"
                 alt="Brand Up Logo"
                 width={32}
                 height={32}
@@ -310,14 +293,16 @@ export default function Home() {
 
 const features = [
   {
-    title: "Custom Website",
-    description: "Get Custom Website Designs and Build Your Brand's Website",
-    icon: <Globe className="w-6 h-6" />,
+    title: "Brand Analytics",
+    description:
+      "Get deep insights into your brand's performance with real-time analytics and reporting.",
+    icon: <BarChart2 className="w-6 h-6" />,
   },
   {
-    title: "Graphic Design",
-    description: "Get Custom Graphic Designs For Your Products or Brand",
-    icon: <PencilRulerIcon className="w-6 h-6" />,
+    title: "Global Reach",
+    description:
+      "Expand your brand's presence across markets with our international growth tools.",
+    icon: <Globe2 className="w-6 h-6" />,
   },
   {
     title: "Market Targeting",
@@ -326,28 +311,53 @@ const features = [
     icon: <Target className="w-6 h-6" />,
   },
   {
-    title: "Archetictural Design",
+    title: "Growth Strategy",
     description:
-      "We will help you create a unique and attractive design for your coming-up store or even booth",
-    icon: <Building2 className="w-6 h-6" />,
+      "Develop and execute winning growth strategies with our expert guidance.",
+    icon: <Rocket className="w-6 h-6" />,
   },
 ];
 
 const pricingPlans = [
   {
     name: "Starter",
-    price: "Free for now",
+    price: "49",
+    description: "Perfect for small brands just getting started",
+    features: [
+      "Brand Analytics Dashboard",
+      "Basic Growth Metrics",
+      "2 Team Members",
+      "5 Brand Campaigns",
+      "Email Support",
+    ],
+  },
+  {
+    name: "Professional",
+    price: "99",
     description: "Ideal for growing brands and businesses",
     features: [
-      "Custom Website",
-      "5 team members working on your brand",
+      "Everything in Starter, plus:",
+      "Advanced Analytics",
+      "10 Team Members",
       "Unlimited Campaigns",
       "Priority Support",
       "Custom Reports",
-      "Design for your store/booth",
-      "Designs for your products",
-      "Custom Logo",
+      "API Access",
     ],
     recommended: true,
+  },
+  {
+    name: "Enterprise",
+    price: "249",
+    description: "For large brands with complex needs",
+    features: [
+      "Everything in Professional, plus:",
+      "Dedicated Account Manager",
+      "Unlimited Team Members",
+      "Custom Integrations",
+      "24/7 Phone Support",
+      "Advanced Security",
+      "Custom Contract",
+    ],
   },
 ];
