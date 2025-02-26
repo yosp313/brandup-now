@@ -272,7 +272,7 @@ export default function Home() {
                       </p>
 
                       {msg && (
-                        <p className="text-xs text-center text-red-500 mt-3">
+                        <p className="text-xs text-center text-red-500 font-bold mt-3">
                           {msg}
                         </p>
                       )}
