@@ -10,6 +10,7 @@ export async function POST(req: Request) {
   } catch (err) {
     return NextResponse.json({
       message: "Error submitting email or email already submitted",
+      error: err,
     });
   }
 }
