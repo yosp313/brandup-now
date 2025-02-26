@@ -1,6 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { insertEmail } from "@/features/email_post";
 import {
   ArrowRight,
   Building2,
@@ -11,15 +12,25 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { FormEvent, useState } from "react";
 
 export default function Home() {
-  const onSubmit = async (e: FormData) => {
-    "use server";
+  const [msg, setMsg] = useState("");
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault();
 
-    const userEmail = e.get("email") as string;
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
 
-    const response = await insertEmail(userEmail);
-    console.log(response);
+    const userEmail = formData.get("email") as string;
+
+    const response = await fetch("/api//insert-email", {
+      method: "POST",
+      body: JSON.stringify({ email: userEmail }),
+    });
+
+    const data = await response.json();
+
+    setMsg(data.message);
   };
 
   return (
@@ -239,7 +250,7 @@ export default function Home() {
                   <div className="space-y-4 max-w-md">
                     <form
                       className="p-6 bg-brand-cream/10 rounded-2xl border border-brand-cream/20"
-                      action={onSubmit}
+                      onSubmit={onSubmit}
                     >
                       <Input
                         type="email"
@@ -257,6 +268,12 @@ export default function Home() {
                       <p className="text-xs text-center text-muted-foreground mt-3">
                         14-day free trial · No credit card required
                       </p>
+
+                      {msg && (
+                        <p className="text-xs text-center text-red-500 mt-3">
+                          {msg}
+                        </p>
+                      )}
                     </form>
                   </div>
                 </div>
