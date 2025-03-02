@@ -6,7 +6,7 @@ export async function POST(req: Request) {
 
   try {
     await insertEmail(email);
-    return NextResponse.json({ message: "Email submitted successfully" });
+    return NextResponse.json({ message: "Email submitted successfully!" });
   } catch (err) {
     return NextResponse.json({
       message: "Error submitting email or email already submitted",

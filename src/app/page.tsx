@@ -114,12 +114,6 @@ export default function Home() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Button
-                  size="lg"
-                  className="bg-brand-cream text-brand-green hover:bg-brand-cream/90 font-medium"
-                >
-                  Book a Demo
-                </Button>
               </div>
             </div>
           </div>
@@ -271,11 +265,17 @@ export default function Home() {
                         14-day free trial · No credit card required
                       </p>
 
-                      {msg && (
-                        <p className="text-xs text-center text-red-500 font-bold mt-3">
-                          {msg}
-                        </p>
-                      )}
+                      {msg && msg === "Email submitted successfully"
+                        ? (
+                          <p className="text-center text-green-500 font-bold text-md">
+                            {msg}
+                          </p>
+                        )
+                        : (
+                          <p className="text-center text-red-500 font-bold text-md">
+                            {msg}
+                          </p>
+                        )}
                     </form>
                   </div>
                 </div>
